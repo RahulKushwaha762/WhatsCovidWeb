@@ -399,6 +399,79 @@ def send_welcome():
 
 
 
+def send_message():
+    from .models import UserDetails
+    list1 = []
+    qw = UserDetails.objects.values('phoneno').annotate(the_count=Count('phoneno'))
+    qw = list(qw)
+    for key in qw:
+        list1.append(key['phoneno'])
+    print(list1)
+
+    account_sid = 'ACc1eb16ac09628f63b82b3b240d52c9b5'
+    auth_token = 'ec68d3148f22e1e3dfab35c43110af1f'
+    client = Client(account_sid, auth_token)
+    string1 = '\U0001F4DD *StateWise COVID-19 details*\n*C-* Confirmed\n*A-* Active\n*D-* Deaths'
+    time.sleep(5)
+    for nu in list1:
+        time.sleep(3)
+        message = client.messages.create(
+            from_='whatsapp:+14155238886',
+            body=string1,
+            to='whatsapp:+91' + str(nu),
+        )
+        print('whatsapp:+91' + str(nu))
+        print(message.sid)
+
+
+    string = cases()
+    for nu in list1:
+        time.sleep(3)
+        message = client.messages.create(
+            from_='whatsapp:+14155238886',
+            body=string,
+            to='whatsapp:+91'+str(nu),
+        )
+        print('whatsapp:+91'+str(nu))
+        print(message.sid)
+    send_hotspots()
+    send_tweets()
+@login_required
+def admin(request):
+    sent = 0
+    sms = ''
+    from .models import UserDetails
+    if request.method == 'POST':
+        sms = request.POST["message"]
+        print(sms)
+        sent = 1
+        from .models import UserDetails
+        list1 = []
+        qw = UserDetails.objects.values('phoneno').annotate(the_count=Count('phoneno'))
+        qw = list(qw)
+        for key in qw:
+            list1.append(key['phoneno'])
+        account_sid = 'ACc1eb16ac09628f63b82b3b240d52c9b5'
+        auth_token = 'ec68d3148f22e1e3dfab35c43110af1f'
+        client = Client(account_sid, auth_token)
+        string = sms
+        for nu in list1:
+            message = client.messages.create(
+                from_='whatsapp:+14155238886',
+                body=string,
+                to='whatsapp:+91' + str(nu),
+            )
+            print('whatsapp:+91' + str(nu))
+            print(message.sid)
+    user = request.user
+    if user.is_authenticated:
+        email = user.email
+        cuser = UserDetails.objects.get(emailid=email)
+
+    context = {
+        'sent':sent,
+        'phoneno':email,
+    }
 
     return render(request, 'admin.html',context)
 @login_required
