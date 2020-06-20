@@ -7,7 +7,7 @@ django.setup()
 from covidapp.models import UserDetails
 send_welcome()
 sched = BlockingScheduler()
-sched.add_job(send_message,'cron',hour='4',minute='30')
+sched.add_job(send_message,'cron',hour='5',minute='30')
 sched.add_job(send_message,'cron',hour='16',minute='30')
 sched.add_job(send_message,'cron',hour='17',minute='30')
 sched.start()
