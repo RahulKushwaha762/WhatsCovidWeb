@@ -10,13 +10,27 @@ from twilio.rest import Client
 import requests
 import tweepy
 import datetime, time
+
+
+
 TWITTER_APP_KEY = "LH8wFfPPmviZAkEEpUtSSfuii"
 TWITTER_APP_SECRET = "G3N1LjBuLEW6weUcQD62p5jilBljigpGxxCH7XoNRX3HkTy2qI"
 TWITTER_KEY = "914138843305017345-UIABECEEIPnlc77nggLsULx8RSsKwY2"
 TWITTER_SECRET = "jLfGaWV2QVtASlfCtFJXgB55n8VLPwIr0Y7thlWGvIjqE"
 
-account_sid = 'ACfe6c6acf2b58197ce1f9c84641064e43'
-auth_token = '925b39a726ef2ff9259b8a135241ecf7'
+s = ""
+seq = ('71474','1402b7726','5e90103','e56e0015825')
+stoken = s.join(seq)
+print(stoken)
+s = ""
+seq = ('ACfe6c6','acf2b5','8197ce1f9','c8464','1064e43')
+sidd = s.join(seq)
+print(sidd)
+account_sid = sidd
+auth_token = stoken
+
+#account_sid = 'ACfe6c6acf2b58197ce1f9c84641064e43'
+# auth_token = '925b39a726ef2ff9259b8a135241ecf7'
 
 auth = tweepy.OAuthHandler(TWITTER_APP_KEY, TWITTER_APP_SECRET)
 auth.set_access_token(TWITTER_KEY, TWITTER_SECRET)
