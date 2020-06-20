@@ -18,7 +18,8 @@ TWITTER_SECRET = "jLfGaWV2QVtASlfCtFJXgB55n8VLPwIr0Y7thlWGvIjqE"
 auth = tweepy.OAuthHandler(TWITTER_APP_KEY, TWITTER_APP_SECRET)
 auth.set_access_token(TWITTER_KEY, TWITTER_SECRET)
 api = tweepy.API(auth)
-
+#main code
+#coding
 ###################################################################
 url = "https://corona-virus-world-and-india-data.p.rapidapi.com/api_india"
 
