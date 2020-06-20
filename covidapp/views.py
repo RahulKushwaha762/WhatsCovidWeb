@@ -1,5 +1,5 @@
 from django.db.models import Count
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render,redirect,HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout as log_out
 from django.conf import settings
@@ -9,8 +9,7 @@ import json
 from twilio.rest import Client
 import requests
 import tweepy
-import datetime
-import time
+import datetime, time
 TWITTER_APP_KEY = "LH8wFfPPmviZAkEEpUtSSfuii"
 TWITTER_APP_SECRET = "G3N1LjBuLEW6weUcQD62p5jilBljigpGxxCH7XoNRX3HkTy2qI"
 TWITTER_KEY = "914138843305017345-UIABECEEIPnlc77nggLsULx8RSsKwY2"
@@ -21,11 +20,310 @@ auth.set_access_token(TWITTER_KEY, TWITTER_SECRET)
 api = tweepy.API(auth)
 
 ###################################################################
+url = "https://corona-virus-world-and-india-data.p.rapidapi.com/api_india"
+
+headers = {
+    'x-rapidapi-host': "corona-virus-world-and-india-data.p.rapidapi.com",
+    'x-rapidapi-key': "8958918a7cmshf379e04fcf503c6p16358ejsn59b16b99859b"
+    }
+
+response = requests.request("GET", url, headers=headers).json()
+def read_file(request):
+    file_path = 'Delhi.docx'
+    with open(file_path, 'rb') as doc:
+        response = HttpResponse(doc.read(), content_type='application/ms-word')
+        # response = HttpResponse(template_output)
+        response['Content-Disposition'] = 'attachment;filename=delhi.docx'
+        return response
+
+def Bangalore(request):
+    file_path = 'Bangalore.docx'
+    with open(file_path, 'rb') as doc:
+        response = HttpResponse(doc.read(), content_type='application/ms-word')
+        # response = HttpResponse(template_output)
+        response['Content-Disposition'] = 'attachment;filename=Bangalore.docx'
+        return response
+def Chandigarh(request):
+    file_path = 'Chandigarh.docx'
+    with open(file_path, 'rb') as doc:
+        response = HttpResponse(doc.read(), content_type='application/ms-word')
+        # response = HttpResponse(template_output)
+        response['Content-Disposition'] = 'attachment;filename=Chandigarh.docx'
+        return response
+def Chennai(request):
+    file_path = 'Chennai.docx'
+    with open(file_path, 'rb') as doc:
+        response = HttpResponse(doc.read(), content_type='application/ms-word')
+        # response = HttpResponse(template_output)
+        response['Content-Disposition'] = 'attachment;filename=Chennai.docx'
+        return response
+def Delhi(request):
+    file_path = 'Delhi.docx'
+    with open(file_path, 'rb') as doc:
+        response = HttpResponse(doc.read(), content_type='application/ms-word')
+        # response = HttpResponse(template_output)
+        response['Content-Disposition'] = 'attachment;filename=Delhi.docx'
+        return response
+def Bangalore(request):
+    file_path = 'Bangalore.docx'
+    with open(file_path, 'rb') as doc:
+        response = HttpResponse(doc.read(), content_type='application/ms-word')
+        # response = HttpResponse(template_output)
+        response['Content-Disposition'] = 'attachment;filename=Bangalore.docx'
+        return response
+def Hyderabad(request):
+    file_path = 'Hyderabad.docx'
+    with open(file_path, 'rb') as doc:
+        response = HttpResponse(doc.read(), content_type='application/ms-word')
+        # response = HttpResponse(template_output)
+        response['Content-Disposition'] = 'attachment;filename=Hyderabad.docx'
+        return response
+def Indore(request):
+    file_path = 'Indore.docx'
+    with open(file_path, 'rb') as doc:
+        response = HttpResponse(doc.read(), content_type='application/ms-word')
+        # response = HttpResponse(template_output)
+        response['Content-Disposition'] = 'attachment;filename=Indore.docx'
+        return response
+def Jaipur(request):
+    file_path = 'Jaipur.docx'
+    with open(file_path, 'rb') as doc:
+        response = HttpResponse(doc.read(), content_type='application/ms-word')
+        # response = HttpResponse(template_output)
+        response['Content-Disposition'] = 'attachment;filename=Jaipur.docx'
+        return response
+def Mumbai(request):
+    file_path = 'Mumbai.docx'
+    with open(file_path, 'rb') as doc:
+        response = HttpResponse(doc.read(), content_type='application/ms-word')
+        # response = HttpResponse(template_output)
+        response['Content-Disposition'] = 'attachment;filename=Mumbai.docx'
+        return response
+def Mysore(request):
+    file_path = 'Mysore.docx'
+    with open(file_path, 'rb') as doc:
+        response = HttpResponse(doc.read(), content_type='application/ms-word')
+        # response = HttpResponse(template_output)
+        response['Content-Disposition'] = 'attachment;filename=Mysore.docx'
+        return response
+def Pune(request):
+    file_path = 'Pune.docx'
+    with open(file_path, 'rb') as doc:
+        response = HttpResponse(doc.read(), content_type='application/ms-word')
+        # response = HttpResponse(template_output)
+        response['Content-Disposition'] = 'attachment;filename=Pune.docx'
+        return response
+def Surat(request):
+    file_path = 'Surat.docx'
+    with open(file_path, 'rb') as doc:
+        response = HttpResponse(doc.read(), content_type='application/ms-word')
+        # response = HttpResponse(template_output)
+        response['Content-Disposition'] = 'attachment;filename=Surat.docx'
+        return response
+
+
+def send_hotspots():
+    import requests
+    import fpdf
+    import os
+    from docx import Document
+
+    list2 = ["Chennai",
+            "Bangalore",
+            "Pune",
+            "Mumbai",
+            "Delhi",
+            "Hyderabad",
+            "Surat",
+            "Jaipur",
+            "Chandigarh",
+            "Indore",
+            "Mysore",
+            "Kolkata",
+            "Visakhapatnam"
+            ]
+
+    chennai = []
+    bangalore = []
+    pune = []
+    mumbai = []
+    delhi = []
+    hyderabad = []
+    surat = []
+    jaipur = []
+    chandigarh = []
+    indore = []
+    mysore = []
+
+    length = len(list2)
+    for ii in list2:
+        result = requests.get('https://www.covidhotspots.in/covid/city/' + str(ii) + '/hotspots')
+        # print(result.status_code)
+        res = result.json()
+        length = len(res)
+        # print(str(ii))
+        for i in range(length):
+            for (k, v) in res[i].items():
+                if (k == 'name' and str(ii) == "Chennai"):
+                    # print("name: "+str(v))
+                    chennai.append(str(i + 1) + ". " + v)
+                if (k == 'name' and str(ii) == "Bangalore"):
+                    bangalore.append(str(i + 1) + ". " + v)
+                if (k == 'name' and str(ii) == "Pune"):
+                    pune.append(str(i + 1) + ". " + v)
+                if (k == 'name' and str(ii) == "Mumbai"):
+                    mumbai.append(str(i + 1) + ". " + v)
+                if (k == 'name' and str(ii) == "Delhi"):
+                    delhi.append(str(i + 1) + ". " + v)
+                if (k == 'name' and str(ii) == "Hyderabad"):
+                    hyderabad.append(str(i + 1) + ". " + v)
+                if (k == 'name' and str(ii) == "Surat"):
+                    surat.append(str(i + 1) + ". " + v)
+                if (k == 'name' and str(ii) == "Jaipur"):
+                    jaipur.append(str(i + 1) + ". " + v)
+                if (k == 'name' and str(ii) == "Chandigarh"):
+                    chandigarh.append(str(i + 1) + ". " + v)
+                if (k == 'name' and str(ii) == "Indore"):
+                    indore.append(str(i + 1) + ". " + v)
+                if (k == 'name' and str(ii) == "Mysore"):
+                    mysore.append(str(i + 1) + ". " + v)
+                # if(k == 'zone'):
+                #     print("zone: "+str(v))
+
+    # chennai
+    # pdf = fpdf.FPDF(format='letter')
+    # pdf.compress = False
+    # pdf.add_page()
+    # pdf.set_font('Arial', '', 14)
+    # for j in chennai:
+    #     pdf.write(5,str(j))
+    #     pdf.ln()
+    # pdf.output('Chennai.pdf', 'F')
+    document0 = Document()
+    document0.add_heading('Chennai Hotspots', 0)
+    for j in chennai:
+        document0.add_paragraph(
+            str(j)
+        )
+    document0.save('Chennai.docx')
+
+    # banglore
+    document1 = Document()
+    document1.add_heading('Bangalore Hotspots', 0)
+    for j in bangalore:
+        document1.add_paragraph(
+            str(j)
+        )
+    document1.save('Bangalore.docx')
+
+    # Pune
+    document3 = Document()
+    document3.add_heading('Pune Hotspots', 0)
+    for j in pune:
+        document3.add_paragraph(
+            str(j)
+        )
+    document3.save('Pune.docx')
+
+    # mumbai
+    document = Document()
+    document.add_heading('Mumbai Hotspots', 0)
+    for j in mumbai:
+        document.add_paragraph(
+            str(j)
+        )
+    document.save('Mumbai.docx')
+
+    # delhi
+    document2 = Document()
+    document2.add_heading('Delhi Hotspots', 0)
+    for j in delhi:
+        document2.add_paragraph(
+            str(j)
+        )
+    document2.save('Delhi.docx')
+
+    # hyderabad
+    document4 = Document()
+    document4.add_heading('Hyderabad Hotspots', 0)
+    for j in hyderabad:
+        document4.add_paragraph(
+            str(j)
+        )
+    document4.save('Hyderabad.docx')
+
+    # surat
+    document5 = Document()
+    document5.add_heading('Surat Hotspots', 0)
+    for j in surat:
+        document5.add_paragraph(
+            str(j)
+        )
+    document5.save('Surat.docx')
+
+    # jaipur
+    document6 = Document()
+    document6.add_heading('Jaipur Hotspots', 0)
+    for j in jaipur:
+        document6.add_paragraph(
+            str(j)
+        )
+    document6.save('Jaipur.docx')
+
+    # chandigarh
+    document7 = Document()
+    document7.add_heading('Chandigarh Hotspots', 0)
+    for j in chandigarh:
+        document7.add_paragraph(
+            str(j)
+        )
+    document7.save('Chandigarh.docx')
+
+    # indore
+    document8 = Document()
+    document8.add_heading('Indore Hotspots', 0)
+    for j in indore:
+        document8.add_paragraph(
+            str(j)
+        )
+    document8.save('Indore.docx')
+
+    # mysore
+    document9 = Document()
+    document9.add_heading('Mysore Hotspots', 0)
+    for j in mysore:
+        document9.add_paragraph(
+            str(j)
+        )
+    document9.save('Mysore.docx')
+
+
+    from .models import UserDetails
+    list1 = []
+    qw = UserDetails.objects.values('phoneno').annotate(the_count=Count('phoneno'))
+    qw = list(qw)
+    for key in qw:
+        list1.append(key['phoneno'])
+    account_sid = 'ACc1eb16ac09628f63b82b3b240d52c9b5'
+    auth_token = 'ec68d3148f22e1e3dfab35c43110af1f'
+    client = Client(account_sid, auth_token)
+    string = ''
+    for rr in list2:
+        string = string+'whatscovid.herokuapp.com/'+rr+'/'+"\n"
+
+    for nu in list1:
+        time.sleep(3)
+        message = client.messages.create(
+            from_='whatsapp:+14155238886',
+            body=string,
+            to='whatsapp:+91' + str(nu),
+        )
+        print('whatsapp:+91' + str(nu))
+        print(message.sid)
 
 
 def send_tweets():
     ans = []
-
     def get_tweets(api, username):
         page = 1
         deadend = False
@@ -35,6 +333,7 @@ def send_tweets():
                 if (datetime.datetime.now() - tweet.created_at).days < 1:
                     print(tweet.text.encode("utf-8"))
                     ans.append(tweet.text.encode("utf-8"))
+                    return
                 else:
                     deadend = True
                     return
@@ -42,7 +341,6 @@ def send_tweets():
                 page + 1
                 time.sleep(500)
     list2 = ['HRDMinistry', 'AICTE_INDIA', 'CMODelhi', 'ArvindKejriwal']
-
     def get_All_tweet():
         for users in list2:
             print("tweet by " + users)
@@ -51,8 +349,7 @@ def send_tweets():
     print('gvhgv', ans)
     from .models import UserDetails
     list1 = []
-    qw = UserDetails.objects.values(
-        'phoneno').annotate(the_count=Count('phoneno'))
+    qw = UserDetails.objects.values('phoneno').annotate(the_count=Count('phoneno'))
     qw = list(qw)
     for key in qw:
         list1.append(key['phoneno'])
@@ -72,49 +369,38 @@ def send_tweets():
             )
             print('whatsapp:+91' + str(nu))
             print(message.sid)
+def cases():
+    line = ''
+    for each in response['state_wise']:
+        if int(response['state_wise'][each]['confirmed']) !=0:
+            line = line + '\n*'+ each+'*' + "\nC-"+response['state_wise'][each]['confirmed'] + " A-"+response['state_wise'][each]['active']+" D-"+response['state_wise'][each]['deaths']
+    return line
 
-
-@login_required
-def admin(request):
-    sent = 0
-    sms = ''
+def send_welcome():
     from .models import UserDetails
-    if request.method == 'POST':
-        sms = request.POST["message"]
-        print(sms)
-        sent = 1
-        from .models import UserDetails
-        list1 = []
-        qw = UserDetails.objects.values(
-            'phoneno').annotate(the_count=Count('phoneno'))
-        qw = list(qw)
-        for key in qw:
-            list1.append(key['phoneno'])
-        account_sid = 'ACc1eb16ac09628f63b82b3b240d52c9b5'
-        auth_token = 'ec68d3148f22e1e3dfab35c43110af1f'
-        client = Client(account_sid, auth_token)
-        string = sms
-        for nu in list1:
-            message = client.messages.create(
-                from_='whatsapp:+14155238886',
-                body=string,
-                to='whatsapp:+91' + str(nu),
-            )
-            print('whatsapp:+91' + str(nu))
-            print(message.sid)
-    user = request.user
-    if user.is_authenticated:
-        email = user.email
-        cuser = UserDetails.objects.get(emailid=email)
+    list1 = []
+    qw = UserDetails.objects.values('phoneno').annotate(the_count=Count('phoneno'))
+    qw = list(qw)
+    for key in qw:
+        list1.append(key['phoneno'])
 
-    context = {
-        'sent': sent,
-        'phoneno': email,
-    }
-
-    return render(request, 'admin.html', context)
+    account_sid = 'ACc1eb16ac09628f63b82b3b240d52c9b5'
+    auth_token = 'ec68d3148f22e1e3dfab35c43110af1f'
+    client = Client(account_sid, auth_token)
+    string = '*Welcome to WhatsCovid Project*\nGet Latest Updates on *Coronavirus*'
+    for nu in list1:
+        message = client.messages.create(
+            from_='whatsapp:+14155238886',
+            body=string,
+            to='whatsapp:+91' + str(nu),
+        )
+        print('whatsapp:+91' + str(nu))
+        print(message.sid)
 
 
+
+
+    return render(request, 'admin.html',context)
 @login_required
 def join(request):
     from .models import UserDetails
@@ -127,12 +413,10 @@ def join(request):
         print(cuser.phoneno)
 
     context = {
-        'currentuser': cuser,
+            'currentuser':cuser,
 
     }
-    return render(request, 'join.html', context)
-
-
+    return render(request,'join.html',context)
 @login_required
 def delete(request):
     from .models import UserDetails
@@ -145,10 +429,9 @@ def delete(request):
         if UserDetails.objects.filter(emailid=user.email).exists():
             UserDetails.objects.filter(emailid=user.email).delete()
     context = {
-        'currentuser': cuser,
+            'currentuser':cuser,
     }
     return redirect('/dashboard/')
-
 
 @login_required
 def dashboard(request):
@@ -166,7 +449,7 @@ def dashboard(request):
             object.phoneno = phone
             object.emailid = user.email
             object.save()
-            print(user.email, phone, state)
+            print(user.email,phone,state)
             return redirect('/joined/')
     if UserDetails.objects.filter(emailid=user.email).exists():
         deletetoggle = 1
@@ -193,8 +476,7 @@ def logout(request):
     log_out(request)
     return_to = urlencode({'returnTo': request.build_absolute_uri('/')})
     logout_url = 'https://%s/v2/logout?client_id=%s&%s' % \
-                 (settings.SOCIAL_AUTH_AUTH0_DOMAIN,
-                  settings.SOCIAL_AUTH_AUTH0_KEY, return_to)
+                 (settings.SOCIAL_AUTH_AUTH0_DOMAIN, settings.SOCIAL_AUTH_AUTH0_KEY, return_to)
     return HttpResponseRedirect(logout_url)
 
 
@@ -205,10 +487,10 @@ def index(request):
     else:
         return render(request, 'index.html')
 
-
 def check(request):
     from .models import UserDetails
     for a in UserDetails.objects.all().values_list('phoneno'):
         pass
 
     return HttpResponse('')
+
