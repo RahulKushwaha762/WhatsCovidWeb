@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WhatsCovid</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+
+.form {
+	position: relative;
+	z-index: 1;
+	background: #FFFFFF;
+	/* max-width: 320px; */
+	/* margin: 0 auto 100px; */
+	padding: 45px;
+	text-align: center;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+	border-radius: 30px;
+	width: 300px;
+	margin-left: auto;
+	margin-right: auto;
+}
+topbar {
+	width: 320px;
+	height: 50px;
+	position: initial;
+	font-size: 1em;
+	font-family: Telefon Black;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 30px;
+}
+.button {
+	font-size: 1rem;
+	text-shadow: black;
+	line-height: 1.2;
+	padding: 10px 16px;
+	position: relative;
+	border-radius: 4px;
+	border: 3px solid transparent;
+	background:linear-gradient(to left, #527ab8, #6F80C2);
+	color: white;
+	cursor: pointer;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-align: center;
+	margin-top:10px;
+}
+
+.button:active{
+    background: #107932;
+	color: white;
+}
+
+
+div {
+	text-align:center;
+	margin-top:50px;
+	margin-bottom:auto;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+body {
+	font-family: georgia,garamond,serif;
+	font-size-adjust: 0.61;
+	background: linear-gradient(to left, #5292b8, #6F84C2);
+	color:black;
+	font-weight:700;
+	transition: .2s ease;
+	text-align: center;
+}
+
+
+</style>
+<body>
+<!-- auth0login/templates/index.html -->
+<div class="form">
+     <div style="background:#f3f4f9;border:2px solid white;"><topbar>WhatsCovid</topbar></div>
+    <div class="login-box auth0-box before">
+    <img src="https://i.cloudup.com/StzWWrY34s.png" />
+        <div>Your Number <i style="color:red"> {{currentuser.phoneno}} </i> is registered</div>
+        <hr>
+            <div>To Recieve Covid Updates we want you to send the below message for next verification</div>
+            <hr>
+        <div>Now Send the whatsapp message by typing <i style="color:red">join put-yes</i>  to <i style="color:green"> +14155238886</i></div>
+</form>
+</div>
+
+     <form action="/logout">
+    <button  class="button" type="submit">Log Out</button>
+</form>
+
+</div>
+
+</body>
+</html>
