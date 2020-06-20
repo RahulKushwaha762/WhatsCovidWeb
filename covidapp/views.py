@@ -15,6 +15,9 @@ TWITTER_APP_SECRET = "G3N1LjBuLEW6weUcQD62p5jilBljigpGxxCH7XoNRX3HkTy2qI"
 TWITTER_KEY = "914138843305017345-UIABECEEIPnlc77nggLsULx8RSsKwY2"
 TWITTER_SECRET = "jLfGaWV2QVtASlfCtFJXgB55n8VLPwIr0Y7thlWGvIjqE"
 
+account_sid = 'ACfe6c6acf2b58197ce1f9c84641064e43'
+auth_token = '925b39a726ef2ff9259b8a135241ecf7'
+
 auth = tweepy.OAuthHandler(TWITTER_APP_KEY, TWITTER_APP_SECRET)
 auth.set_access_token(TWITTER_KEY, TWITTER_SECRET)
 api = tweepy.API(auth)
@@ -305,8 +308,7 @@ def send_hotspots():
     qw = list(qw)
     for key in qw:
         list1.append(key['phoneno'])
-    account_sid = 'ACc1eb16ac09628f63b82b3b240d52c9b5'
-    auth_token = 'ec68d3148f22e1e3dfab35c43110af1f'
+
     client = Client(account_sid, auth_token)
     string = ''
     for rr in list2:
@@ -355,8 +357,6 @@ def send_tweets():
     for key in qw:
         list1.append(key['phoneno'])
     print(list1)
-    account_sid = 'ACc1eb16ac09628f63b82b3b240d52c9b5'
-    auth_token = 'ec68d3148f22e1e3dfab35c43110af1f'
     client = Client(account_sid, auth_token)
     string1 = '\U0001F4DD *Tweets*'
     for a in ans:
@@ -385,8 +385,6 @@ def send_welcome():
     for key in qw:
         list1.append(key['phoneno'])
 
-    account_sid = 'ACc1eb16ac09628f63b82b3b240d52c9b5'
-    auth_token = 'ec68d3148f22e1e3dfab35c43110af1f'
     client = Client(account_sid, auth_token)
     string = '*Welcome to WhatsCovid Project*\nGet Latest Updates on *Coronavirus*'
     for nu in list1:
@@ -409,8 +407,7 @@ def send_message():
         list1.append(key['phoneno'])
     print(list1)
 
-    account_sid = 'ACc1eb16ac09628f63b82b3b240d52c9b5'
-    auth_token = 'ec68d3148f22e1e3dfab35c43110af1f'
+
     client = Client(account_sid, auth_token)
     string1 = '\U0001F4DD *StateWise COVID-19 details*\n*C-* Confirmed\n*A-* Active\n*D-* Deaths'
     time.sleep(5)
@@ -452,8 +449,7 @@ def admin(request):
         qw = list(qw)
         for key in qw:
             list1.append(key['phoneno'])
-        account_sid = 'ACc1eb16ac09628f63b82b3b240d52c9b5'
-        auth_token = 'ec68d3148f22e1e3dfab35c43110af1f'
+
         client = Client(account_sid, auth_token)
         string = sms
         for nu in list1:
