@@ -93,7 +93,7 @@ body {
 
 <div class="form">
      <div style="background:#f3f4f9;border:2px solid white;"><topbar>WhatsCovid</topbar></div>
-     <div>Provide the Remaining Details</div>
+     <div>Provide the Remaining Details (Phone Numbers are specific to India ,+91)</div>
       <div class="logged-in-box auth0-box logged-in">
     <img class="avatar" height="100px" src="{{ auth0User.extra_data.picture }}"/>
      <center> <label for="username">Username</label></center>
@@ -102,14 +102,17 @@ body {
         {% csrf_token %}
       <center> <label for="email">Email</label></center>
       <input class="select" name="emailc" id="email" type="text" value="{{ user.email }}" disabled >
+
       <center> <label for="phone">Phone No.</label></center>
+                   <select class="select">
+                     <option>+91</option>
+                   </select>
       <input class="select" name = "phonec" id="phone" type="text" placeholder="Enter Phone Number" pattern="[0-9.]+" required>
-       <center><label for="state">State in India</label></center>
+       <center><label for="state">Country</label></center>
         <select class="select" id="state" name="statedata">
-            <option value="delhi">Delhi</option>
-            <option value="mumbai">Mumbai</option>
+            <option value="India">India</option>
         </select>
-        <input class="button" type="submit" value="Submit">
+        <input class="button" type="submit" value="Update">
     </form>
 </div>
 

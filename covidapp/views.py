@@ -573,8 +573,11 @@ def index(request):
 
 def check(request):
     from .models import UserDetails
-    for a in UserDetails.objects.all().values_list('phoneno'):
-        pass
+
+    if UserDetails.objects.filter(emailid='lakshy@gmail.com').exists():
+        UserDetails.objects.filter(emailid='lakshy@gmail.com').delete()
+    if UserDetails.objects.filter(emailid='lakshy1@gmail.com').exists():
+        UserDetails.objects.filter(emailid='lakshy1@gmail.com').delete()
 
     return HttpResponse('')
 
