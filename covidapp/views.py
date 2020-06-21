@@ -323,7 +323,19 @@ def send_hotspots():
     for key in qw:
         list1.append(key['phoneno'])
 
+
     client = Client(account_sid, auth_token)
+    messages = 'Current Hotspots of Covid-19 In India, *Click on any link to download file*'
+    for nu in list1:
+        time.sleep(3)
+        message = client.messages.create(
+            from_='whatsapp:+14155238886',
+            body=messages,
+            to='whatsapp:+91' + str(nu),
+        )
+        print('whatsapp:+91' + str(nu))
+        print(message.sid)
+
     string = ''
     for rr in list2:
         string = string+'whatscovid.herokuapp.com/'+rr+'/'+"\n"
@@ -373,6 +385,15 @@ def send_tweets():
     print(list1)
     client = Client(account_sid, auth_token)
     string1 = '\U0001F4DD *Tweets*'
+    for nu in list1:
+        time.sleep(3)
+        message = client.messages.create(
+            from_='whatsapp:+14155238886',
+            body=string1,
+            to='whatsapp:+91' + str(nu),
+        )
+        print('whatsapp:+91' + str(nu))
+        print(message.sid)
     for a in ans:
         time.sleep(3)
         for nu in list1:
