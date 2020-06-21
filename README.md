@@ -6,6 +6,9 @@ to send important messages anytime to all the users.
 The website is deployed on heroku.
 Website Link:
 https://whatscovid.herokuapp.com/
+
+### Useful Alerts will be send to your registered WhatsApp Number daily at 10:00 AM, 03:00 PM and 09:00 PM.
+
 ## Language Used
 |Language|
 |------|
