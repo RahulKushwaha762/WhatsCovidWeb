@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'r*p_)ckxr6))kkz+r4j9bk@7!58d3#e)m7ox_9ry1llz+k9)8e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['whatscovid.herokuapp.com','127.0.0.1']
 

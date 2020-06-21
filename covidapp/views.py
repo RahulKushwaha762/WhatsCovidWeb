@@ -421,7 +421,7 @@ def send_welcome():
         list1.append(key['phoneno'])
 
     client = Client(account_sid, auth_token)
-    string = '*Welcome to WhatsCovid Project*\nGet Latest Updates on *Coronavirus*'
+    string = '*Welcome to WhatsCovid Project*\nGet Latest Updates on *Coronavirus*\n\nUseful Alerts will be send to you daily at 10:00 AM,03:00 PM, 09:00 PM'
     for nu in list1:
         message = client.messages.create(
             from_='whatsapp:+14155238886',
@@ -593,12 +593,5 @@ def index(request):
         return render(request, 'index.html')
 
 def check(request):
-    from .models import UserDetails
-
-    if UserDetails.objects.filter(emailid='lakshy@gmail.com').exists():
-        UserDetails.objects.filter(emailid='lakshy@gmail.com').delete()
-    if UserDetails.objects.filter(emailid='lakshy1@gmail.com').exists():
-        UserDetails.objects.filter(emailid='lakshy1@gmail.com').delete()
-
     return HttpResponse('')
 
