@@ -14,7 +14,7 @@ defusedxml==0.7.0rc1
 dj-database-url==0.5.0
 Django==2.2.13
 django-jinja==2.6.0
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 document==1.0
 docx==0.2.4
 EasyProcess==0.2.10
