@@ -1,5 +1,5 @@
 # WhatsCovidWeb
-A Python-Django Web project where you can get details about COVID-19 directly at your whatsapp. It is integrated with auth0 authentication
+Python-Django Web project where you can get details about COVID-19 directly at your whatsapp. It is integrated with auth0 authentication
 which provides better security to the users. User will recieve information like State wise covid details of India, Current Covid Hotspots
 in various cities. Person will also recieve latest tweets form HRD Ministry,CMO DELHI,AICTE etc. Special ADMIN page is also provided to send
 to send important messages anytime to all the users.
