@@ -24,7 +24,7 @@ fpdf==1.7.2
 gunicorn==20.0.4
 idna==2.9
 Jinja2==2.11.2
-joblib==0.15.1
+joblib==1.2.0
 kiwisolver==1.2.0
 lxml==4.5.1
 MarkupSafe==1.1.1
